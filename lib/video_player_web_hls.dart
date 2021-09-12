@@ -191,6 +191,8 @@ class _VideoPlayer {
   void initialize() {
     videoElement = VideoElement()
       ..src = uri
+      ..style.width = '100%'
+      ..style.height = '100%'
       ..autoplay = false
       ..controls = false
       ..style.border = 'none';
