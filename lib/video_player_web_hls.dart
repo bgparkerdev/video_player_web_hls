@@ -192,6 +192,8 @@ class _VideoPlayer {
     videoElement = VideoElement()
       ..src = uri
       ..autoplay = false
+      ..style.width = '100%'
+      ..style.height = '100%'
       ..controls = false
       ..style.border = 'none';
 
@@ -245,8 +247,7 @@ class _VideoPlayer {
         throw NoScriptTagException();
       }
     } else {
-      videoElement.src = uri.toString();
-      videoElement.addEventListener('loadedmetadata', (_) {
+      videoElement.onCanPlay.listen((dynamic _) {
         if (!isInitialized) {
           isInitialized = true;
           sendInitialized();
@@ -282,7 +283,6 @@ class _VideoPlayer {
 
     videoElement.onEnded.listen((dynamic _) {
       setBuffering(false);
-
       eventController.add(VideoEvent(eventType: VideoEventType.completed));
     });
   }
