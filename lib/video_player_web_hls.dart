@@ -202,6 +202,7 @@ class _VideoPlayer {
 
     ui.platformViewRegistry.registerViewFactory(
         'videoPlayer-$textureId', (int viewId) => videoElement);
+    print("hello");
 
     if (isSupported() &&
         uri.toString().contains("m3u8") &&
