@@ -200,10 +200,14 @@ class _VideoPlayer {
     // Allows Safari iOS to play the video inline
     videoElement.setAttribute('playsinline', 'true');
 
-    // TODO(hterkelsen): Use initialization parameters once they are available
-    // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
         'videoPlayer-$textureId', (int viewId) => videoElement);
+
+    print(videoElement.canPlayType('application/vnd.apple.mpegurl'));
+    print(videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty);
+    print(isSupported() &&
+        uri.toString().contains("m3u8") &&
+        videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty);
 
     if (isSupported() &&
         uri.toString().contains("m3u8") &&
