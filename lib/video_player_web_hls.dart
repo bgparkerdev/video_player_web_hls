@@ -192,7 +192,6 @@ class _VideoPlayer {
     videoElement = VideoElement()
       ..src = uri
       ..style.width = '100%'
-      ..style.height = '100%'
       ..autoplay = false
       ..controls = false
       ..style.border = 'none';
@@ -205,8 +204,7 @@ class _VideoPlayer {
 
     if (isSupported() &&
         uri.toString().contains("m3u8") &&
-        videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty &&
-        false) {
+        videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty) {
       try {
         _hls = new Hls(
           HlsConfig(
