@@ -203,15 +203,10 @@ class _VideoPlayer {
     ui.platformViewRegistry.registerViewFactory(
         'videoPlayer-$textureId', (int viewId) => videoElement);
 
-    print(videoElement.canPlayType('application/vnd.apple.mpegurl'));
-    print(videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty);
-    print(isSupported() &&
-        uri.toString().contains("m3u8") &&
-        videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty);
-
     if (isSupported() &&
         uri.toString().contains("m3u8") &&
-        videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty) {
+        videoElement.canPlayType('application/vnd.apple.mpegurl').isEmpty &&
+        false) {
       try {
         _hls = new Hls(
           HlsConfig(
@@ -231,7 +226,6 @@ class _VideoPlayer {
           ),
         );
         _hls!.attachMedia(videoElement);
-        // print(hls.config.runtimeType);
         _hls!.on('hlsMediaAttached', allowInterop((_, __) {
           _hls!.loadSource(uri.toString());
         }));
