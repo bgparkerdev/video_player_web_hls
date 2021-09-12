@@ -200,6 +200,9 @@ class _VideoPlayer {
     // Allows Safari iOS to play the video inline
     videoElement.setAttribute('playsinline', 'true');
 
+    // Set autoplay to false since most browsers won't autoplay a video unless it is muted
+    videoElement.setAttribute('autoplay', 'false');
+
     ui.platformViewRegistry.registerViewFactory(
         'videoPlayer-$textureId', (int viewId) => videoElement);
 
