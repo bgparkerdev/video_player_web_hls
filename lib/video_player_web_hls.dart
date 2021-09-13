@@ -243,6 +243,7 @@ class _VideoPlayer {
             isInitialized = true;
             sendInitialized();
           }
+          sendInitialized();
           setBuffering(false);
         });
       } catch (e) {
