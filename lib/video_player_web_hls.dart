@@ -251,7 +251,7 @@ class _VideoPlayer {
         throw NoScriptTagException();
       }
     } else {
-      videoElement.onCanPlay.listen((dynamic _) {
+      videoElement.addEventListener('loadedmetadata', (_) {
         if (!isInitialized) {
           isInitialized = true;
           sendInitialized();
